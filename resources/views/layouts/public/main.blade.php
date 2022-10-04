@@ -15,10 +15,10 @@
 <nav class="border-b border-gray-800">
     <div class="container mx-auto flex flex-col md:flex-row items-center justify-between px-4 py-6">
         <ul class="flex flex-col md:flex-row items-center">
-            <li><a href="{{ route('home') }}">
+            <li><a href="{{ route('movies.show') }}">
                     <img class="w-32" src="/img/logo.png" alt="">
                 </a></li>
-            <li class="md:ml-16"><a class="hover:text-gray-300" href="#">Movies</a></li>
+            <li class="md:ml-16"><a class="hover:text-gray-300" href="{{ route('movies.show') }}">Movies</a></li>
             <li class="md:ml-6"><a class="hover:text-gray-300" href="#">TV Shows</a></li>
             <li class="md:ml-6"><a class="hover:text-gray-300" href="#">Actors</a></li>
         </ul>

@@ -5,7 +5,7 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('home') }}">
+                    <a href="{{ route('movies.show') }}">
                         <x-application-logo class="block w-auto fill-current w-28" />
                     </a>
                 </div>

@@ -5,14 +5,22 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('movies.show') }}">
+                    <a href="{{ route('movies.index') }}">
                         <x-application-logo class="block w-auto fill-current w-28" />
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    <x-nav-link :href="route('movies.index')" :active="request()->routeIs('movies.index')">
+                        {{ __('Home') }}
+                    </x-nav-link>
+
+                    <x-nav-link :href="route('favorites.index')" :active="request()->routeIs('favorites.index')">
+                        {{ __('Favorite list') }}
+                    </x-nav-link>
+
+                    <x-nav-link :href="route('profile.index')" :active="request()->routeIs('profile.index')">
                         {{ __('My Profile') }}
                     </x-nav-link>
                 </div>
@@ -22,7 +30,9 @@
             <div class="hidden sm:flex sm:items-center sm:ml-6">
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
-                        <button class="flex items-center text-sm font-medium text-gray-100 hover:text-gray-400 hover:border-gray-300 focus:outline-none focus:text-gray-400 focus:border-gray-300 transition duration-150 ease-in-out">
+                        <button class="flex items-center text-sm font-medium text-gray-100 hover:text-gray-400 hover:border-gray-300
+                         focus:outline-none focus:text-gray-400 focus:border-gray-300 transition duration-150 ease-in-out">
+                            <img src="/img/profile/avatar.jpeg" alt="avatar" class="rounded-full w-8 h-8 m-2">
                             <div>{{ Auth::user()->name }}</div>
 
                             <div class="ml-1">

@@ -15,18 +15,18 @@
 <nav class="border-b border-gray-800">
     <div class="container mx-auto flex flex-col md:flex-row items-center justify-between px-4 py-6">
         <ul class="flex flex-col md:flex-row items-center">
-            <li><a href="{{ route('movies.show') }}">
+            <li><a href="{{ route('movies.index') }}">
                     <img class="w-32" src="/img/logo.png" alt="">
                 </a></li>
-            <li class="md:ml-16"><a class="hover:text-gray-300" href="{{ route('movies.show') }}">Movies</a></li>
-            <li class="md:ml-6"><a class="hover:text-gray-300" href="#">TV Shows</a></li>
-            <li class="md:ml-6"><a class="hover:text-gray-300" href="#">Actors</a></li>
+            <li class="md:ml-16"><a class="hover:text-gray-300" href="{{ route('movies.index') }}">Movies</a></li>
+            <li class="md:ml-6"><a class="hover:text-gray-300" href="{{ route('tv.index') }}">TV Shows</a></li>
+            <li class="md:ml-6"><a class="hover:text-gray-300" href="{{ route('actors.index') }}">Actors</a></li>
         </ul>
         @auth
             <x-dropdown align="right" width="48">
                 <x-slot name="trigger">
                     <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
-                        <img src="img/profile/avatar.jpeg" alt="avatar" class="rounded-full w-8 h-8">
+                        <img src="/img/profile/avatar.jpeg" alt="avatar" class="rounded-full w-8 h-8">
 
                         <div class="ml-1">
                             <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -39,7 +39,11 @@
                 </x-slot>
 
                 <x-slot name="content">
-                    <x-dropdown-link :href="route('dashboard')">
+                    <x-dropdown-link :href="route('favorites.index')">
+                        {{ __('Favorite list') }}
+                    </x-dropdown-link>
+
+                    <x-dropdown-link :href="route('profile.index')">
                         {{ __('My Profile') }}
                     </x-dropdown-link>
 

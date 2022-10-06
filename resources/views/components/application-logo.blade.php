@@ -1,1 +1,1 @@
-<img src="/img/logo.png" alt="" {{ $attributes }}>
+<img class="w-32" src="/img/logo.png" alt="" {{ $attributes }}>

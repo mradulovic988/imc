@@ -10,41 +10,38 @@ use Livewire\Component;
 use function PHPUnit\Framework\returnArgument;
 
 class ProfileCreate extends Component {
-    public $first_name, $last_name, $email, $country, $state, $city, $zip, $address;
+    public $name, $last_name, $email, $country, $state, $city, $zip, $address;
 
     public function addProfile() {
-        $dataValidation = $this->validate([
-            'first_name' => 'required',
-            'last_name' => 'required',
-            'email' => 'required|email',
-            'country' => 'required',
-            'state' => 'required',
-            'city' => 'required',
-            'zip' => 'required',
-            'address' => 'required',
-        ]);
-
-        MyProfiles::updateOrCreate(
-            [
-                'user_id' => auth()->id()
-            ],
-            [
-                'first_name' => $this->first_name,
-                'last_name' => $this->last_name,
-                'email' => $this->email,
-                'country' => $this->country,
-                'state' => $this->state,
-                'city' => $this->city,
-                'zip' => $this->zip,
-                'address' => $this->address,
-            ]
+        User::updateOrCreate(
+            ['id' => auth()->id()],
+            $this->validate([
+                'name' => 'required|min:2|max:20',
+                'last_name' => 'min:2|max:20',
+                'email' => 'required|email',
+                'country' => 'required',
+                'state' => 'min:2|max:20',
+                'city' => 'min:2|max:20',
+                'zip' => 'min:2|max:20',
+                'address' => 'min:2|max:20',
+            ])
         );
+    }
+
+    public function mount() {
+        $this->name = auth()->user()->name;
+        $this->last_name = auth()->user()->last_name;
+        $this->email = auth()->user()->email;
+        $this->country = auth()->user()->country;
+        $this->state = auth()->user()->state;
+        $this->city = auth()->user()->city;
+        $this->zip = auth()->user()->zip;
+        $this->address = auth()->user()->address;
     }
 
     public function render() {
         return view('livewire.profile-create', [
             'users' => User::all(),
-            'profiles' => MyProfiles::all()
         ]);
     }
 }

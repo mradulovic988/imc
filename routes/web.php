@@ -5,6 +5,7 @@ use App\Http\Controllers\MoviesController;
 use App\Http\Controllers\FavoritesController;
 use App\Http\Controllers\MyProfilesController;
 use App\Http\Controllers\TvController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::controller(MoviesController::class)->group(function () {
@@ -26,7 +27,7 @@ Route::controller(FavoritesController::class)->middleware(['auth', 'verified'])-
     Route::get('/favorites', 'index')->name('favorites.index');
 });
 
-Route::controller(MyProfilesController::class)->middleware(['auth', 'verified'])->group(function () {
+Route::controller(UserController::class)->middleware(['auth', 'verified'])->group(function () {
     Route::get('/profile', 'index')->name('profile.index');
 });
 

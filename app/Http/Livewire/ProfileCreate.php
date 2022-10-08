@@ -10,7 +10,7 @@ use Livewire\Component;
 use function PHPUnit\Framework\returnArgument;
 
 class ProfileCreate extends Component {
-    public $name, $last_name, $email, $country, $state, $city, $zip, $address;
+    public $name, $last_name, $email, $country, $state, $city, $zip, $address, $message;
 
     public function addProfile() {
         User::updateOrCreate(
@@ -26,6 +26,8 @@ class ProfileCreate extends Component {
                 'address' => 'min:2|max:20',
             ])
         );
+
+        session()->flash('message', 'Profile information successfully updated.');
     }
 
     public function mount() {

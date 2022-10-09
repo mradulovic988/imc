@@ -26,7 +26,10 @@
             <x-dropdown align="right" width="48">
                 <x-slot name="trigger">
                     <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
-                        <img src="/img/profile/avatar.jpeg" alt="avatar" class="rounded-full w-8 h-8">
+                        @if (auth()->user()->file)
+                            <img class="rounded-full w-8 h-8 m-2"
+                                 src="{{ asset('storage/' . auth()->user()->file) }}" alt="">
+                        @endif
 
                         <div class="ml-1">
                             <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">

@@ -7,24 +7,32 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 use function PHPUnit\Framework\returnArgument;
 
 class ProfileCreate extends Component {
-    public $name, $last_name, $email, $country, $state, $city, $zip, $address, $message;
+    use WithFileUploads;
+
+    public $name, $last_name, $email, $country, $state, $city, $zip, $address, $message, $file;
 
     public function addProfile() {
+        $addProfile = $this->validate([
+            'name' => 'required|min:2|max:20',
+            'last_name' => 'min:2|max:20',
+            'email' => 'required|email',
+            'country' => 'required',
+            'state' => 'min:2|max:20',
+            'city' => 'min:2|max:20',
+            'zip' => 'min:2|max:20',
+            'address' => 'min:2|max:20',
+            'file' => 'image|max:1024|mimes:jpg,png,jpeg'
+        ]);
+
+        $addProfile['file'] = $this->file->store('img', 'public');
+
         User::updateOrCreate(
             ['id' => auth()->id()],
-            $this->validate([
-                'name' => 'required|min:2|max:20',
-                'last_name' => 'min:2|max:20',
-                'email' => 'required|email',
-                'country' => 'required',
-                'state' => 'min:2|max:20',
-                'city' => 'min:2|max:20',
-                'zip' => 'min:2|max:20',
-                'address' => 'min:2|max:20',
-            ])
+            $addProfile
         );
 
         session()->flash('message', 'Profile information successfully updated.');

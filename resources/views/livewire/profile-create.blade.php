@@ -1,4 +1,5 @@
 <form wire:submit.prevent="addProfile">
+    @csrf
     <div class="overflow-hidden shadow sm:rounded-md">
         <div class="bg-white px-4 py-5 sm:p-6">
             <div class="grid grid-cols-6 gap-6">
@@ -110,14 +111,14 @@
                     <p class="text-red-500 text-xs mt-1">{{$message}}</p>
                     @enderror
                 </div>
+                <x-flash-message/>
             </div>
         </div>
         <div class="bg-gray-50 px-4 py-3 text-right sm:px-6">
-            <button @click="editData = !editData" type="submit" name="submit"
+            <button type="submit" name="submit"
                     class="inline-flex justify-center rounded-md border border-transparent bg-yellow-500 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
                 Save
             </button>
         </div>
     </div>
-    <x-flash-message/>
 </form>

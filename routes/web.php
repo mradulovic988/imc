@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ActorsController;
+use App\Http\Controllers\DashboardUsersController;
 use App\Http\Controllers\MoviesController;
 use App\Http\Controllers\FavoritesController;
 use App\Http\Controllers\MyProfilesController;
@@ -31,8 +32,11 @@ Route::controller(UserController::class)->middleware(['auth', 'verified'])->grou
     Route::get('/profile', 'index')->name('profile.index');
 });
 
-Route::get('/dashboard', fn() => view('dashboard'))
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
+Route::middleware('admin')->group(function() {
+    Route::get('/dashboard-users', [DashboardUsersController::class, 'index'])->name('dashboard.users');
+    Route::get('/dashboard-logs', fn() => view('dashboard.logs'))->name('dashboard.logs');
+    Route::get('/dashboard-settings', fn() => view('dashboard.settings'))->name('dashboard.settings');
+    Route::get('/dashboard-notifications', fn() => view('dashboard.notifications'))->name('dashboard.notifications');
+});
 
 require __DIR__ . '/auth.php';

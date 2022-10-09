@@ -22,6 +22,7 @@ return new class extends Migration {
             $table->string('address')->nullable();
             $table->string('email')->unique();
             $table->string('file')->nullable();
+            $table->integer('role')->default('0');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

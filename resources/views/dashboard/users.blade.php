@@ -26,7 +26,7 @@
                                     E-mail
                                 </th>
                                 <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                    User role
+                                    Country
                                 </th>
                                 <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
                                     Actions
@@ -35,7 +35,8 @@
                             </thead>
                             <tbody>
                             @foreach($users as $user)
-                                <tr id="userTableRow" class="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
+                                <tr id="userTableRow"
+                                    class="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
                                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                                         @if ($user->file)
                                             <img class="w-12 h-12 object-cover rounded-full"
@@ -52,15 +53,7 @@
                                         {{ $user->email }}
                                     </td>
                                     <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                        <select name="role" id="role">
-                                            @if ($user->role === 1)
-                                                <option value="1">Admin</option>
-                                                <option value="0">Regular user</option>
-                                            @else
-                                                <option value="0">Regular user</option>
-                                                <option value="1">Admin</option>
-                                            @endif
-                                        </select>
+                                        {{ $user->country }}
                                     </td>
                                     <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap inline-flex gap-2 mt-3">
                                         <button id="showUser">

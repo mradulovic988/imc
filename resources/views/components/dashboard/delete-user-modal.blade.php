@@ -21,7 +21,7 @@
                     </svg>
                     <h3 class="text-lg font-normal text-gray-500 dark:text-gray-400">Are you sure you want to
                         delete
-                        this user?</h3>
+                        <b>{{ $user->name . ' ' . $user->last_name ?? '' }}</b>?</h3>
                     <p class="mb-5 text-sm font-bold text-gray-500 dark:text-gray-400">This action cannot be undone.</p>
                     <livewire:dashboard.user-delete :user="$user"/>
                     <button id="closeBtnDelete" type="button"

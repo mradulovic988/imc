@@ -36,4 +36,12 @@ class User extends Authenticatable {
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function scopeFilter($query, array $filters) {
+
+        // Filter for tags
+        if ($filters['role'] ?? false) {
+            $query->where('role', '=', '1');
+        }
+    }
 }

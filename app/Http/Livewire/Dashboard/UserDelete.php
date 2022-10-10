@@ -13,7 +13,7 @@ class UserDelete extends Component {
         $this->deleteUser = $userId;
         $user = User::findOrFail($this->deleteUser);
         $user->delete();
-        session()->flash('message', 'User successfully deleted.');
+        session()->flash('userDeleted', 'User successfully deleted.');
     }
 
     public function render() {

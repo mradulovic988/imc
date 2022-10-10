@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
+            {{--            {{ __('Dashboard') }}--}}
         </h2>
     </x-slot>
     <div class="py-12">
@@ -35,7 +35,7 @@
                             </thead>
                             <tbody>
                             @foreach($users as $user)
-                                <tr class="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
+                                <tr id="userTableRow" class="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
                                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                                         @if ($user->file)
                                             <img class="w-12 h-12 object-cover rounded-full"
@@ -105,6 +105,7 @@
                         <div class="mt-6 p-4">
                             {{$users->links()}}
                         </div>
+
                     </div>
                 </div>
             </div>

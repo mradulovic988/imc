@@ -3,3 +3,9 @@
         {{ session('message') }}
     </div>
 @endif
+
+@if (session()->has('userDeleted'))
+    <div x-data="{show: true}" x-init="setTimeout(() => show = false, 3000)" class="bg-gray-900 text-white w-full rounded py-3 px-2 my-10">
+        {{ session('userDeleted') }}
+    </div>
+@endif

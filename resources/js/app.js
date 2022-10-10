@@ -7,4 +7,4 @@ window.Alpine = Alpine;
 Alpine.start();
 
 modalUser('#showUser', '#showUserModal', '#closeUserModal');
-modalUser('#deleteUser', '#deleteUserModal', '#closeDeleteModal', '#closeBtnDelete', '#afterDeleteBtn');
+modalUser('#deleteUser', '#deleteUserModal', '#closeDeleteModal', '#closeBtnDelete', '#afterDeleteBtn', '#userTableRow');

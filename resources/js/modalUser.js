@@ -1,9 +1,10 @@
-const modalUser = (getBtn, getModal, close, closeBtn = null, deleteBtn = null) => {
+const modalUser = (getBtn, getModal, close, closeBtn = null, deleteBtn = null, tableRow = null) => {
 	const showUser = document.querySelectorAll(getBtn);
 	const showUserModal = document.querySelectorAll(getModal);
 	const closeUserModal = document.querySelectorAll(close);
 	const closeBtnModal = document.querySelectorAll(closeBtn);
 	const closeAfterDelete = document.querySelectorAll(deleteBtn);
+	const getTableRow = document.querySelectorAll(tableRow);
 
 	showUser.forEach((user, i) => {
 		user.addEventListener('click', () => {
@@ -22,7 +23,8 @@ const modalUser = (getBtn, getModal, close, closeBtn = null, deleteBtn = null) =
 
 		if (closeAfterDelete[i]) {
 			closeAfterDelete[i].addEventListener('click', () => {
-				showUserModal[i].classList.add('hidden');
+				getTableRow[i].style.display = 'none'
+				setTimeout(() => showUserModal[i].classList.add('hidden'), 3000);
 			});
 		}
 	});

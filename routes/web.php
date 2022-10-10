@@ -4,7 +4,6 @@ use App\Http\Controllers\ActorsController;
 use App\Http\Controllers\DashboardUsersController;
 use App\Http\Controllers\MoviesController;
 use App\Http\Controllers\FavoritesController;
-use App\Http\Controllers\MyProfilesController;
 use App\Http\Controllers\TvController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;

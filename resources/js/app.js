@@ -1,9 +1,10 @@
 import './bootstrap';
 import Alpine from 'alpinejs';
-import viewUser from './viewUser'
+import modalUser from './modalUser'
 
 window.Alpine = Alpine;
 
 Alpine.start();
 
-viewUser();
+modalUser('#showUser', '#showUserModal', '#closeUserModal');
+modalUser('#deleteUser', '#deleteUserModal', '#closeDeleteModal', '#closeBtnDelete', '#afterDeleteBtn');

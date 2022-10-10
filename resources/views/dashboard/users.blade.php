@@ -63,22 +63,23 @@
                                         </select>
                                     </td>
                                     <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap inline-flex gap-2 mt-3">
-                                        <form action="">
-                                            <button type="button">
-                                                <svg width="24" height="24" version="1.1" id="Capa_1"
-                                                     xmlns="http://www.w3.org/2000/svg"
-                                                     xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                     viewBox="0 0 57.945 57.945"
-                                                     style="enable-background:new 0 0 57.945 57.945;"
-                                                     xml:space="preserve"><circle style="fill:#3083C9;" cx="28.973"
-                                                                                  cy="29.472" r="12"/>
-                                                    <path style="fill:none;stroke:#C6E2F7;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;"
-                                                          d="M36,29.472c0,3.866-3.134,7-7,7s-7-3.134-7-7s3.134-7,7-7"/>
-                                                    <path style="fill:none;stroke:#556080;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;"
-                                                          d="M1,29.309l0.23-0.232c15.349-15.473,40.366-15.473,55.715,0l0,0"/>
+                                        {{--                                        <livewire:admin.user-list-view :user="$user"/>--}}
+
+                                        <button id="showUser">
+                                            <svg width="24" height="24" version="1.1" id="Capa_1"
+                                                 xmlns="http://www.w3.org/2000/svg"
+                                                 xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                 viewBox="0 0 57.945 57.945"
+                                                 style="enable-background:new 0 0 57.945 57.945;"
+                                                 xml:space="preserve"><circle style="fill:#3083C9;" cx="28.973"
+                                                                              cy="29.472" r="12"/>
+                                                <path style="fill:none;stroke:#C6E2F7;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;"
+                                                      d="M36,29.472c0,3.866-3.134,7-7,7s-7-3.134-7-7s3.134-7,7-7"/>
+                                                <path style="fill:none;stroke:#556080;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;"
+                                                      d="M1,29.309l0.23-0.232c15.349-15.473,40.366-15.473,55.715,0l0,0"/>
                                                 </svg>
-                                            </button>
-                                        </form>
+                                        </button>
+
                                         <form action="">
                                             <button type="button">
                                                 <svg id="Layer_1" width="24" height="24" data-name="Layer 1"
@@ -113,4 +114,7 @@
             </div>
         </div>
     </div>
+    @foreach($users as $user)
+        <x-dashboard.show-user-modal :user="$user"/>
+    @endforeach
 </x-app-layout>

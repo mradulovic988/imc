@@ -27,10 +27,12 @@
                 <x-slot name="trigger">
                     <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
                         <div class="relative mt-3">
-                            <input type="text" class="bg-gray-800 rounded-full w-64 px-4 pl-8 py-1" placeholder="Search">
+                            <input type="text" class="bg-gray-800 rounded-full w-64 px-4 pl-8 py-1"
+                                   placeholder="Search">
                             <div class="absolute top-0">
                                 <svg class="fill-current w-4 text-gray-500 mt-2 ml-2" viewBox="0 0 24 24">
-                                    <path class="heroicon-ui" d="M16.32 14.9l5.39 5.4a1 1 0 01-1.42 1.4l-5.38-5.38a8 8 0 111.41-1.41zM10 16a6 6 0 100-12 6 6 0 000 12z"></path>
+                                    <path class="heroicon-ui"
+                                          d="M16.32 14.9l5.39 5.4a1 1 0 01-1.42 1.4l-5.38-5.38a8 8 0 111.41-1.41zM10 16a6 6 0 100-12 6 6 0 000 12z"></path>
                                 </svg>
                             </div>
                             <div class="spinner top-0 right-0 mr-4 mt-4"></div>
@@ -83,7 +85,8 @@
         @guest
             <x-dropdown align="right" width="48">
                 <x-slot name="trigger">
-                    <x-dropdown-link class="text-white hover:text-gray-800 focus:text-gray-800" onclick="event.preventDefault()">
+                    <x-dropdown-link class="text-white hover:text-gray-800 focus:text-gray-800 hover:cursor-pointer"
+                                     onclick="event.preventDefault()">
                         {{ __('Sign Up') }}
                     </x-dropdown-link>
                 </x-slot>
@@ -104,7 +107,7 @@
 @yield('content')
 
 @livewireScripts
-
+@livewire('livewire-ui-modal')
 @yield('scripts')
 </body>
 

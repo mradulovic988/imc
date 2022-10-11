@@ -39,44 +39,67 @@
                         @endforeach
                     </div>
                 </div>
-                <div x-data="{ isOpen: false }">
-                    @if (count($movie['videos']['results']) > 0)
-                        <div class="mt-12">
-                            <button @click="isOpen = true"
-                                    class="flex inline-flex items-center bg-orange-500 text-gray-900 rounded font-semibold px-5 py-4 hover:bg-orange-600 transition ease-in-out duration-150">
-                                <svg class="w-6 fill-current" viewBox="0 0 24 24">
-                                    <path d="M0 0h24v24H0z" fill="none"/>
-                                    <path
-                                            d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
-                                </svg>
-                                <span class="ml-2">Play Trailer</span>
-                            </button>
-                        </div>
+                <div class="inline-flex" x-data="{ isOpen: false }">
+                    <div>
+                        @if (count($movie['videos']['results']) > 0)
+                            <div class="mt-12">
+                                <button @click="isOpen = true"
+                                        class="flex inline-flex items-center bg-orange-500 text-gray-900 rounded font-semibold px-5 py-4 hover:bg-orange-600 transition ease-in-out duration-150">
+                                    <svg class="w-6 fill-current" viewBox="0 0 24 24">
+                                        <path d="M0 0h24v24H0z" fill="none"/>
+                                        <path
+                                                d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                                    </svg>
+                                    <span class="ml-2">Play Trailer</span>
+                                </button>
+                            </div>
 
 
-                        <div style="background-color: rgba(0, 0, 0, .5);"
-                             class="fixed top-0 left-0 w-full h-full flex items-center shadow-lg overflow-y-auto"
-                             x-show="isOpen">
-                            <div class="container mx-auto lg:px-32 rounded-lg overflow-y-auto">
-                                <div class="bg-gray-900 rounded">
-                                    <div class="flex justify-end pr-4 pt-2">
-                                        <button @click="isOpen = false" @keydown.escape.window="isOpen = false"
-                                                class="text-3xl leading-none hover:text-gray-300">&times;
-                                        </button>
-                                    </div>
-                                    <div class="modal-body px-8 py-8">
-                                        <div class="responsive-container overflow-hidden relative"
-                                             style="padding-top: 56.25%">
-                                            <iframe class="responsive-iframe absolute top-0 left-0 w-full h-full"
-                                                    src="https://www.youtube.com/embed/{{ $movie['videos']['results'][0]['key'] }}"
-                                                    style="border:0;" allow="autoplay; encrypted-media"
-                                                    allowfullscreen></iframe>
+                            <div style="background-color: rgba(0, 0, 0, .5);"
+                                 class="fixed top-0 left-0 w-full h-full flex items-center shadow-lg overflow-y-auto"
+                                 x-show="isOpen">
+                                <div class="container mx-auto lg:px-32 rounded-lg overflow-y-auto">
+                                    <div class="bg-gray-900 rounded">
+                                        <div class="flex justify-end pr-4 pt-2">
+                                            <button @click="isOpen = false" @keydown.escape.window="isOpen = false"
+                                                    class="text-3xl leading-none hover:text-gray-300">&times;
+                                            </button>
+                                        </div>
+                                        <div class="modal-body px-8 py-8">
+                                            <div class="responsive-container overflow-hidden relative"
+                                                 style="padding-top: 56.25%">
+                                                <iframe class="responsive-iframe absolute top-0 left-0 w-full h-full"
+                                                        src="https://www.youtube.com/embed/{{ $movie['videos']['results'][0]['key'] }}"
+                                                        style="border:0;" allow="autoplay; encrypted-media"
+                                                        allowfullscreen></iframe>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                        @endif
+                    </div>
+                    @auth()
+                        <div class="m-12">
+                            <a href="#" class="flex inline-flex items-center py-2">
+
+                                <svg class="w-10" viewBox="0 0 100 100" version="1.1"
+                                     xmlns="http://www.w3.org/2000/svg"
+                                     xmlns:xlink="http://www.w3.org/1999/xlink">
+                                    <g class="stroke-red-400 hover:fill-red-400 focus:fill-red-400 active:fill-red-400 transition ease-in-out duration-150"
+                                       id="38.-Hearth" stroke="none" stroke-width="1" fill="transparent"
+                                       fill-rule="evenodd"
+                                       stroke-linecap="round"
+                                       stroke-linejoin="round">
+                                        <g transform="translate(2.000000, 5.000000)" id="Layer-1" stroke=""
+                                           stroke-width="4">
+                                            <path d="M0,28.4968421 C0,71.2421048 42.215625,90.24 48,90.24 C53.784375,90.24 96,71.2421048 96,28.4968421 C96,28.2459588 95.9824899,28.0047118 95.9481422,27.7728233 C95.9825427,27.2269576 96,26.6765487 96,26.1221053 C96,11.6952649 84.1803174,0 69.6,0 C60.6712427,0 52.7777636,4.3858941 48,11.0991442 C43.2222364,4.3858941 35.3287573,0 26.4,0 C11.8196826,0 0,11.6952649 0,26.1221053 C0,26.6770096 0.0174863673,27.2278728 0.0519436085,27.7741847 C0.0175367953,28.0057341 0,28.2465295 0,28.4968421 Z"></path>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </a>
                         </div>
-                    @endif
+                    @endauth
                 </div>
             </div>
         </div>

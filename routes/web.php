@@ -3,7 +3,7 @@
 use App\Http\Controllers\ActorsController;
 use App\Http\Controllers\DashboardUsersController;
 use App\Http\Controllers\MoviesController;
-use App\Http\Controllers\FavoritesController;
+use App\Http\Controllers\ListsController;
 use App\Http\Controllers\TvController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -24,8 +24,8 @@ Route::controller(ActorsController::class)->group(function () {
     Route::get('/actors/{id}', 'show')->name('actors.show');
 });
 
-Route::controller(FavoritesController::class)->middleware(['auth', 'verified'])->group(function () {
-    Route::get('/favorites', 'index')->name('favorites.index');
+Route::controller(ListsController::class)->middleware(['auth', 'verified'])->group(function () {
+    Route::get('/your-lists', 'index')->name('your-lists.index');
 });
 
 Route::controller(UserController::class)->middleware(['auth', 'verified'])->group(function () {

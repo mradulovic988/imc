@@ -16,8 +16,8 @@
                         {{ __('Home') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('favorites.index')" :active="request()->routeIs('favorites.index')">
-                        {{ __('Favorite list') }}
+                    <x-nav-link :href="route('your-lists.index')" :active="request()->routeIs('your-lists.index')">
+                        {{ __('Your lists') }}
                     </x-nav-link>
 
                     <x-nav-link :href="route('profile.index')" :active="request()->routeIs('profile.index')">

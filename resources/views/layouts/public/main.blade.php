@@ -45,8 +45,8 @@
                 </x-slot>
 
                 <x-slot name="content">
-                    <x-dropdown-link :href="route('favorites.index')">
-                        {{ __('Favorite list') }}
+                    <x-dropdown-link :href="route('your-lists.index')">
+                        {{ __('Your lists') }}
                     </x-dropdown-link>
 
                     <x-dropdown-link :href="route('profile.index')">

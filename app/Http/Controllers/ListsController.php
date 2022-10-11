@@ -8,7 +8,9 @@ use Illuminate\Http\Request;
 
 class ListsController extends Controller {
     public function index() {
-        return view('profile.lists.your-lists');
+        return view('profile.lists.your-lists', [
+            'lists' => Lists::all()
+        ]);
     }
 
     public function create() {

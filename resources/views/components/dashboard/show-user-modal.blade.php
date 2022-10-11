@@ -19,7 +19,7 @@
                              src="{{ asset('storage/' . $user->file) }}" alt="">
                     @else
                         <img class="w-48 h-48 object-contain rounded-full"
-                             src="/img/profile/avatar.jpeg" alt="">
+                             src="https://i.pravatar.cc/150?u={{ $user->id }}" alt="">
                     @endif
                 </div>
                 <div class="mt-12">

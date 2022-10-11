@@ -45,7 +45,7 @@
                                                  src="{{ asset('storage/' . $user->file) }}" alt="">
                                         @else
                                             <img class="w-12 h-12 object-cover rounded-full"
-                                                 src="img/profile/avatar.jpeg" alt="">
+                                                 src="https://i.pravatar.cc/150?u={{ $user->id }}" alt="">
                                         @endif
                                     </td>
                                     <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">

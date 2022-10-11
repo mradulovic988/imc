@@ -107,7 +107,7 @@
 @yield('content')
 
 @livewireScripts
-@livewire('livewire-ui-modal')
+
 @yield('scripts')
 </body>
 

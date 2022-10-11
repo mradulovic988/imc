@@ -20,6 +20,7 @@ Route::controller(TvController::class)->group(function () {
 
 Route::controller(ActorsController::class)->group(function () {
     Route::get('/actors', 'index')->name('actors.index');
+    Route::get('/actors/page/{page?}', 'index');
     Route::get('/actors/{id}', 'show')->name('actors.show');
 });
 
@@ -31,7 +32,7 @@ Route::controller(UserController::class)->middleware(['auth', 'verified'])->grou
     Route::get('/profile', 'index')->name('profile.index');
 });
 
-Route::middleware('admin')->group(function() {
+Route::middleware('admin')->group(function () {
     Route::get('/dashboard-users', [DashboardUsersController::class, 'index'])->name('dashboard.users');
     Route::get('/dashboard-logs', fn() => view('dashboard.logs'))->name('dashboard.logs');
     Route::get('/dashboard-settings', fn() => view('dashboard.settings'))->name('dashboard.settings');

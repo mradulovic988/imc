@@ -23,10 +23,10 @@
             <li class="md:ml-6"><a class="hover:text-gray-300" href="{{ route('actors.index') }}">Actors</a></li>
         </ul>
         @auth
+            <livewire:search.search-engine/>
             <x-dropdown align="right" width="48">
                 <x-slot name="trigger">
                     <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
-                        <livewire:search.search-engine/>
                         @if (auth()->user()->file)
                             <img class="w-8 h-8 object-cover rounded-full m-2"
                                  src="{{ asset('storage/' . auth()->user()->file) }}" alt="">
@@ -74,7 +74,9 @@
 
         @guest
             <ul class="">
-                <li><livewire:search.search-engine/></li>
+                <li>
+                    <livewire:search.search-engine/>
+                </li>
             </ul>
             <x-dropdown align="right" width="48">
                 <x-slot name="trigger">

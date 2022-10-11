@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Profile;
 
 use App\Models\User;
 use Livewire\Component;
@@ -16,6 +16,6 @@ class ProfileDelete extends Component {
     }
 
     public function render() {
-        return view('livewire.profile-delete');
+        return view('livewire.profile.profile-delete');
     }
 }

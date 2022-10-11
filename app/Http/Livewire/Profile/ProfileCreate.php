@@ -1,14 +1,11 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Profile;
 
 use App\Models\MyProfiles;
 use App\Models\User;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithFileUploads;
-use function PHPUnit\Framework\returnArgument;
 
 class ProfileCreate extends Component {
     use WithFileUploads;
@@ -50,7 +47,7 @@ class ProfileCreate extends Component {
     }
 
     public function render() {
-        return view('livewire.profile-create', [
+        return view('livewire.profile.profile-create', [
             'users' => User::all(),
         ]);
     }

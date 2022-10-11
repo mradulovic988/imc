@@ -24,7 +24,7 @@ class AppServiceProvider extends ServiceProvider {
 
         // Check if admin user role
         Blade::if('admin', function () {
-            return auth()->user()->role == 1;
+            return auth()->user()->role === 1;
         });
     }
 }

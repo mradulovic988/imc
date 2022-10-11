@@ -24,6 +24,7 @@ const modalUser = (getBtn, getModal, close, closeBtn = null, deleteBtn = null, t
 		if (closeAfterDelete[i]) {
 			closeAfterDelete[i].addEventListener('click', () => {
 				getTableRow[i].style.display = 'none'
+				closeBtnModal[i].style.display = 'none';
 				setTimeout(() => showUserModal[i].classList.add('hidden'), 3000);
 			});
 		}

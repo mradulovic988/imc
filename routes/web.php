@@ -26,6 +26,8 @@ Route::controller(ActorsController::class)->group(function () {
 
 Route::controller(ListsController::class)->middleware(['auth', 'verified'])->group(function () {
     Route::get('/your-lists', 'index')->name('your-lists.index');
+    Route::get('/create-your-list', 'create')->name('create-your-list.create');
+    Route::post('/lists', 'store')->name('lists.store');
 });
 
 Route::controller(UserController::class)->middleware(['auth', 'verified'])->group(function () {

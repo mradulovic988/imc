@@ -34,6 +34,8 @@
     </main>
 </div>
 
+<x-flash-message/>
+
 @livewireScripts
 @yield('scripts')
 </body>

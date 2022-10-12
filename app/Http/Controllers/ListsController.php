@@ -27,7 +27,7 @@ class ListsController extends Controller {
 
         Lists::create($listFields);
 
-        return redirect('/your-lists')->with('message', 'Listing created successfully.');
+        return redirect('/your-lists')->with('lists', 'Listing created successfully.');
     }
 
     public function edit(Lists $lists) {
@@ -50,7 +50,7 @@ class ListsController extends Controller {
 
         $lists->update($listFields);
 
-        return redirect('/your-lists')->with('message', 'List updated successfully.');
+        return redirect('/your-lists')->with('lists', 'List updated successfully.');
     }
 
     public function destroy(Lists $lists) {
@@ -59,6 +59,6 @@ class ListsController extends Controller {
         }
 
         $lists->delete();
-        return redirect('/your-lists')->with('message', 'List deleted successfully.');
+        return redirect('/your-lists')->with('lists', 'List deleted successfully.');
     }
 }

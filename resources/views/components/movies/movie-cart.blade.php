@@ -8,20 +8,63 @@
             <a href="{{ route('movies.show', $movie['id']) }}"
                class="text-lg hover:text-gray:300">{{ $movie['title'] }}</a>
             @auth
-                <a href="#" class="text-end float-right absolute top-0 right-0 mt-1">
-                    <svg width="20px" height="20px" viewBox="0 0 100 100" version="1.1"
-                         xmlns="http://www.w3.org/2000/svg"
-                         xmlns:xlink="http://www.w3.org/1999/xlink">
-                        <g class="stroke-red-400 hover:fill-red-400 focus:fill-red-400 active:fill-red-400 transition ease-in-out duration-150"
-                           id="38.-Hearth" stroke="none" stroke-width="1" fill="transparent" fill-rule="evenodd"
-                           stroke-linecap="round"
-                           stroke-linejoin="round">
-                            <g transform="translate(2.000000, 5.000000)" id="Layer-1" stroke="" stroke-width="4">
-                                <path d="M0,28.4968421 C0,71.2421048 42.215625,90.24 48,90.24 C53.784375,90.24 96,71.2421048 96,28.4968421 C96,28.2459588 95.9824899,28.0047118 95.9481422,27.7728233 C95.9825427,27.2269576 96,26.6765487 96,26.1221053 C96,11.6952649 84.1803174,0 69.6,0 C60.6712427,0 52.7777636,4.3858941 48,11.0991442 C43.2222364,4.3858941 35.3287573,0 26.4,0 C11.8196826,0 0,11.6952649 0,26.1221053 C0,26.6770096 0.0174863673,27.2278728 0.0519436085,27.7741847 C0.0175367953,28.0057341 0,28.2465295 0,28.4968421 Z"></path>
+                <div class="inline-flex" x-data="{ isFavoriteOpen: false }">
+                    <a href="#" @click="isFavoriteOpen = true" class="text-end float-right absolute top-0 right-0 mt-1">
+                        <svg width="20px" height="20px" viewBox="0 0 100 100" version="1.1"
+                             xmlns="http://www.w3.org/2000/svg"
+                             xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <g class="stroke-red-400 hover:fill-red-400 focus:fill-red-400 active:fill-red-400 transition ease-in-out duration-150"
+                               id="38.-Hearth" stroke="none" stroke-width="1" fill="transparent" fill-rule="evenodd"
+                               stroke-linecap="round"
+                               stroke-linejoin="round">
+                                <g transform="translate(2.000000, 5.000000)" id="Layer-1" stroke="" stroke-width="4">
+                                    <path d="M0,28.4968421 C0,71.2421048 42.215625,90.24 48,90.24 C53.784375,90.24 96,71.2421048 96,28.4968421 C96,28.2459588 95.9824899,28.0047118 95.9481422,27.7728233 C95.9825427,27.2269576 96,26.6765487 96,26.1221053 C96,11.6952649 84.1803174,0 69.6,0 C60.6712427,0 52.7777636,4.3858941 48,11.0991442 C43.2222364,4.3858941 35.3287573,0 26.4,0 C11.8196826,0 0,11.6952649 0,26.1221053 C0,26.6770096 0.0174863673,27.2278728 0.0519436085,27.7741847 C0.0175367953,28.0057341 0,28.2465295 0,28.4968421 Z"></path>
+                                </g>
                             </g>
-                        </g>
-                    </svg>
-                </a>
+                        </svg>
+                    </a>
+
+                    <div style="background-color: rgba(0, 0, 0, .5);"
+                         class="fixed top-0 left-0 w-full h-full flex items-center shadow-lg overflow-y-auto z-50"
+                         x-show="isFavoriteOpen">
+                        <div class="container mx-auto text-center rounded-lg overflow-y-auto">
+                            <div class="inline-flex bg-gray-900 rounded">
+                                <div class="grid-cols-1 text-start modal-body p-8 w-96">
+                                    <a class="text-lg hover:text-gray:300"
+                                       href="{{ route('movies.show', $movie['id']) }}">
+                                        <img src="{{ $movie['poster_path'] }}" alt="poster"
+                                             class="w-16 hover:opacity-75 transition ease-in-out duration-150">
+                                        {{ $movie['title'] }}
+                                        ({{ \Carbon\Carbon::parse($movie['release_date'])->format('Y') }})
+                                    </a>
+                                </div>
+                                <div class="grid-cols-1 text-end p-8 w-96">
+                                    <button @click="isFavoriteOpen = false"
+                                            @keydown.escape.window="isFavoriteOpen = false"
+                                            class="text-3xl leading-none hover:text-gray-300">&times;
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="inline-flex bg-gray-900 rounded">
+                                <div class="grid-cols-1 text-start modal-body px-8 pb-8 w-96">
+                                    <h2 class="text-lg">Choose a list</h2>
+                                </div>
+                                <div class="grid-cols-1 text-end px-8 pb-8 w-96">
+                                    <form action="">
+                                        <select class="text-gray-900 w-full" name="" id="">
+                                            @foreach($movie['lists'] as $list)
+                                                @if ($list->user_id === auth()->user()->id )
+                                                    <option value="{{ $list->id }}">{{ $list->list_name }}</option>
+                                                @endif
+                                            @endforeach
+                                        </select>
+                                        <button class="my-5">Save</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             @endauth
         </div>
         <div class="flex items-center text-gray-400 text-sm mt-1">

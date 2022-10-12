@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Lists;
 use App\ViewModels\MoviesViewModel;
 use App\ViewModels\MovieViewModel;
 use Illuminate\Http\Request;
@@ -9,6 +10,8 @@ use Illuminate\Support\Facades\Http;
 
 class MoviesController extends Controller {
     public function index() {
+        $lists = Lists::all();
+
         $popularMovies = Http::withToken(config('services.tmdb.token'))
             ->get('https://api.themoviedb.org/3/movie/popular')
             ->json()['results'];
@@ -28,7 +31,8 @@ class MoviesController extends Controller {
         $moviesViewModel = new MoviesViewModel(
             $popularMovies,
             $nowPlayingMovies,
-            $genres
+            $genres,
+            $lists
         );
 
         return view('movies.index', $moviesViewModel);

@@ -61,4 +61,10 @@ class ListsController extends Controller {
         $lists->delete();
         return redirect('/your-lists')->with('lists', 'List deleted successfully.');
     }
+
+    public function show(Lists $lists) {
+        return view('profile.lists.show-your-list', [
+            'lists' => $lists
+        ]);
+    }
 }

@@ -1,7 +1,7 @@
 <!-- List start here -->
 <div class="favorite-name-list">
     <div class="sm:block md:flex lg:flex">
-        <a class="hover:text-gray-900" href="#">
+        <a class="hover:text-gray-900" href="/list/{{ $list->id }}">
             <h2 class="tracking-wider text-gray-700 font-black text-md font-semibold">
                 {{ $list->list_name }}
             </h2>

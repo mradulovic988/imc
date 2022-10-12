@@ -31,6 +31,7 @@ Route::controller(ListsController::class)->middleware(['auth', 'verified'])->gro
     Route::get('/list/{lists}/edit', 'edit')->name('edit-your-list.edit');
     Route::put('/list/{lists}', 'update')->name('update-your-list.update');
     Route::delete('/list/{lists}', 'destroy')->name('delete-your-list.update');
+    Route::get('/list/{lists}', 'show')->name('show-your-list.show');
 });
 
 Route::controller(UserController::class)->middleware(['auth', 'verified'])->group(function () {

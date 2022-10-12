@@ -1,6 +1,6 @@
 import './bootstrap';
 import Alpine from 'alpinejs';
-import modalUser from './modalUser'
+import modalUser from './modalUser';
 
 window.Alpine = Alpine;
 

@@ -31,7 +31,7 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     <div class="container mx-auto px-4">
                         @foreach($lists as $list)
-                            @if ($list->user_id === auth()->user()->id)
+                            @if ($list->user_id === auth()->user()->id )
                                 <x-lists.lists :list="$list"/>
                             @endif
                         @endforeach

@@ -29,12 +29,20 @@
             </x-slot>
 
             <x-slot name="content">
-                <x-dropdown-link>
+                <x-dropdown-link :href="'/list/'.$list->id.'/edit'">
                     {{ __('Edit') }}
                 </x-dropdown-link>
-                <x-dropdown-link>
-                    {{ __('Delete') }}
-                </x-dropdown-link>
+
+                <form class="hover:cursor-pointer" method="POST" action="/list/{{ $list->id }}">
+                    @csrf
+                    @method('DELETE')
+
+                    <x-dropdown-link onclick="event.preventDefault();
+											this.closest('form').submit();">
+                        {{ __('Delete') }}
+                    </x-dropdown-link>
+                </form>
+
             </x-slot>
         </x-dropdown>
     </div>

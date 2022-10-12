@@ -28,6 +28,9 @@ Route::controller(ListsController::class)->middleware(['auth', 'verified'])->gro
     Route::get('/your-lists', 'index')->name('your-lists.index');
     Route::get('/create-your-list', 'create')->name('create-your-list.create');
     Route::post('/lists', 'store')->name('lists.store');
+    Route::get('/list/{lists}/edit', 'edit')->name('edit-your-list.edit');
+    Route::put('/list/{lists}', 'update')->name('update-your-list.update');
+    Route::delete('/list/{lists}', 'destroy')->name('delete-your-list.update');
 });
 
 Route::controller(UserController::class)->middleware(['auth', 'verified'])->group(function () {

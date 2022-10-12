@@ -29,4 +29,36 @@ class ListsController extends Controller {
 
         return redirect('/your-lists')->with('message', 'Listing created successfully.');
     }
+
+    public function edit(Lists $lists) {
+        return view('profile.lists.edit-your-list', [
+            'lists' => $lists
+        ]);
+    }
+
+    public function update(Request $request, Lists $lists) {
+        if ($lists->user_id != auth()->id()) {
+            abort(403, 'Unauthorized action.');
+        }
+
+        $listFields = $request->validate([
+            'list_name' => 'required|min:5|max:30',
+            'list_description' => 'required|min:5|max:2000'
+        ]);
+
+        $listFields['user_id'] = auth()->id();
+
+        $lists->update($listFields);
+
+        return redirect('/your-lists')->with('message', 'List updated successfully.');
+    }
+
+    public function destroy(Lists $lists) {
+        if ($lists->user_id != auth()->id()) {
+            abort(403, 'Unauthorized action.');
+        }
+
+        $lists->delete();
+        return redirect('/your-lists')->with('message', 'List deleted successfully.');
+    }
 }

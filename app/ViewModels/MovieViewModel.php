@@ -2,14 +2,16 @@
 
 namespace App\ViewModels;
 
+use App\Models\Lists;
 use Carbon\Carbon;
 use Spatie\ViewModels\ViewModel;
 
 class MovieViewModel extends ViewModel {
-    public $movie;
+    public $movie, $lists;
 
-    public function __construct($movie) {
+    public function __construct($movie, $lists) {
         $this->movie = $movie;
+        $this->lists = $lists;
     }
 
     public function movie() {
@@ -21,8 +23,9 @@ class MovieViewModel extends ViewModel {
             'crew' => collect($this->movie['credits']['crew'])->take(5),
             'cast' => collect($this->movie['credits']['cast'])->take(5),
             'images' => collect($this->movie['images']['backdrops'])->take(9),
+            'lists' => Lists::all()
         ])->only([
-            'poster_path', 'id', 'genres', 'title', 'vote_average', 'overview', 'release_date', 'credits', 'videos', 'images', 'crew', 'cast', 'images', 'tagline'
+            'poster_path', 'id', 'genres', 'title', 'vote_average', 'overview', 'release_date', 'credits', 'videos', 'images', 'crew', 'cast', 'images', 'tagline', 'lists'
         ]);
     }
 }

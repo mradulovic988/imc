@@ -39,11 +39,16 @@ class MoviesController extends Controller {
     }
 
     public function show($id) {
+        $lists = Lists::all();
+
         $movie = Http::withToken(config('services.tmdb.token'))
             ->get('https://api.themoviedb.org/3/movie/' . $id . '?append_to_response=credits,videos,images')
             ->json();
 
-        $movieViewModel = new MovieViewModel($movie);
+        $movieViewModel = new MovieViewModel(
+            $movie,
+            $lists
+        );
 
         return view('movies.show', $movieViewModel);
     }

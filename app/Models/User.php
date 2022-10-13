@@ -40,4 +40,8 @@ class User extends Authenticatable {
     public function lists() {
         return $this->hasMany(Lists::class, 'user_id');
     }
+
+    public function favorites() {
+        return $this->hasMany(Favorites::class, 'user_id');
+    }
 }

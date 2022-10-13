@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Favorites;
 use App\Models\Lists;
 use App\Models\User;
 use Illuminate\Http\Request;
 
 class ListsController extends Controller {
-    public function index() {
+    public function index(Favorites $favorites) {
         return view('profile.lists.your-lists', [
-            'lists' => Lists::latest()->get()
+            'lists' => Lists::latest()->get(),
+            'favorites' => Favorites::latest()->get()
         ]);
     }
 
@@ -64,7 +66,8 @@ class ListsController extends Controller {
 
     public function show(Lists $lists) {
         return view('profile.lists.show-your-list', [
-            'lists' => $lists
+            'lists' => $lists,
+            'favorites' => Favorites::all()
         ]);
     }
 }

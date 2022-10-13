@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ActorsController;
 use App\Http\Controllers\DashboardUsersController;
+use App\Http\Controllers\FavoritesController;
 use App\Http\Controllers\MoviesController;
 use App\Http\Controllers\ListsController;
 use App\Http\Controllers\TvController;
@@ -32,6 +33,10 @@ Route::controller(ListsController::class)->middleware(['auth', 'verified'])->gro
     Route::put('/list/{lists}', 'update')->name('update-your-list.update');
     Route::delete('/list/{lists}', 'destroy')->name('delete-your-list.update');
     Route::get('/list/{lists}', 'show')->name('show-your-list.show');
+});
+
+Route::controller(FavoritesController::class)->middleware(['auth', 'verified'])->group(function () {
+    Route::post('/favorites', 'store')->name('favorites.store');
 });
 
 Route::controller(UserController::class)->middleware(['auth', 'verified'])->group(function () {

@@ -5,18 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Lists extends Model {
+class Favorites extends Model {
     use HasFactory;
 
     protected $guarded = [];
-
-    protected $table = 'lists';
 
     public function user() {
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function favorites() {
-        return $this->belongsTo(Favorites::class);
+    public function lists() {
+        return $this->hasMany(Lists::class, 'list_id');
     }
 }

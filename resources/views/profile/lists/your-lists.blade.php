@@ -32,7 +32,7 @@
                     <div class="container mx-auto px-4">
                         @foreach($lists as $list)
                             @if ($list->user_id === auth()->user()->id )
-                                <x-lists.lists :list="$list"/>
+                                <x-lists.lists :list="$list" :favorites="$favorites"/>
                             @endif
                         @endforeach
                     </div>

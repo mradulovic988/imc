@@ -16,7 +16,7 @@
                             </h2>
 
                             <div class="mt-8">
-                                <livewire:profile-create/>
+                                <livewire:profile.profile-create/>
                             </div>
                         </div>
                     </div>
@@ -34,7 +34,7 @@
                             </h2>
 
                             <div class="mt-8">
-                                <livewire:profile-delete/>
+                                <livewire:profile.profile-delete/>
                             </div>
                         </div>
                     </div>

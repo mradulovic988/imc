@@ -22,7 +22,7 @@
                                                        class="block text-sm font-medium text-gray-700">List name</label>
                                                 <input type="text" name="list_name" id="list_name"
                                                        class="mt-1 block w-full rounded-md border-yellow-500 shadow-sm focus:accent-yellow-600 focus:ring-yellow-600 sm:text-sm"
-                                                       value="{{ $lists->list_name }}">
+                                                       value="{{ $lists->list_name ?? old('list_name') }}">
                                                 @error('list_name')
                                                 <p class="text-red-500 text-xs mt-1">{{$message}}</p>
                                                 @enderror
@@ -34,7 +34,7 @@
                                                 <div class="mt-1">
                                                     <textarea id="list_description" name="list_description" rows="3"
                                                               class="mt-1 block w-full rounded-md border-yellow-500 shadow-sm focus:accent-yellow-600 focus:ring-yellow-600 sm:text-sm"
-                                                              placeholder="Lorem ipsum dolor sit amet, consectetur adipisicing elit.">{{ $lists->list_description }}</textarea>
+                                                              placeholder="Lorem ipsum dolor sit amet, consectetur adipisicing elit.">{{ $lists->list_description ?? old('list_description') }}</textarea>
                                                 </div>
                                                 <p class="mt-2 text-sm text-gray-500">Brief description for your
                                                     list.</p>

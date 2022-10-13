@@ -17,6 +17,7 @@
             </button>
         </div>
         <p class="text-sm">{{ $lists->list_description }}</p>
+        <a class="text-sm hover:text-orange-500 transition ease-in-out duration-200" href="{{ route('your-lists.index') }}">Back to lists</a>
     </x-slot>
     <div class="py-6">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">

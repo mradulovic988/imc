@@ -1,8 +1,8 @@
 <!-- List start here -->
 <div class="favorite-name-list">
     <div class="sm:block md:flex lg:flex">
-        <a class="hover:text-gray-900" href="/list/{{ $list->id }}">
-            <h2 class="tracking-wider text-gray-700 font-black text-md font-semibold">
+        <a class="hover:text-orange-500 transition ease-in-out duration-200" href="/list/{{ $list->id }}">
+            <h2 class="tracking-wider text-gray-700 font-black text-md font-semibold hover:text-orange-500 transition ease-in-out duration-200">
                 {{ $list->list_name }}
             </h2>
         </a>

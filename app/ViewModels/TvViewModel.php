@@ -2,6 +2,7 @@
 
 namespace App\ViewModels;
 
+use App\Models\Lists;
 use Carbon\Carbon;
 use Spatie\ViewModels\ViewModel;
 
@@ -9,11 +10,13 @@ class TvViewModel extends ViewModel {
     public $popularTv;
     public $topRatedTv;
     public $genres;
+    public $lists;
 
-    public function __construct($popularTv, $topRatedTv, $genres) {
+    public function __construct($popularTv, $topRatedTv, $genres, $lists) {
         $this->popularTv = $popularTv;
         $this->topRatedTv = $topRatedTv;
         $this->genres = $genres;
+        $this->lists = $lists;
     }
 
     public function popularTv() {
@@ -41,8 +44,9 @@ class TvViewModel extends ViewModel {
                 'vote_average' => $tvshows['vote_average'],
                 'first_air_date' => Carbon::parse($tvshows['first_air_date'])->format('M d, Y'),
                 'genres' => $genresFormatted,
+                'lists' => Lists::all(),
             ])->only([
-                'poster_path', 'id', 'genre_ids', 'name', 'vote_average', 'overview', 'first_air_date', 'genres'
+                'poster_path', 'id', 'genre_ids', 'name', 'vote_average', 'overview', 'first_air_date', 'genres', 'lists'
             ]);
         });
     }

@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class ListsController extends Controller {
     public function index() {
         return view('profile.lists.your-lists', [
-            'lists' => Lists::all()
+            'lists' => Lists::latest()->get()
         ]);
     }
 

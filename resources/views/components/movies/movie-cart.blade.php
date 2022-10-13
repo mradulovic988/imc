@@ -67,7 +67,7 @@
 
                                         <div class="inline-flex items-center text-gray-400 text-sm mt-6 my-2">
 
-                                            <select class="px-6 py-2.5 text-sm font-normal border border-gray-900 text-gray-500 rounded-lg inline-flex items-center"
+                                            <select class="py-2.5 text-sm font-normal border border-gray-900 text-gray-500 rounded-lg inline-flex items-center"
                                                     name="add_to_list" id="add-to-list">
                                                 <option value="">Choose a list</option>
                                                 @foreach($movie['lists'] as $list)

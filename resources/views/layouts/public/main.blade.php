@@ -81,7 +81,7 @@
             <x-dropdown align="right" width="48">
                 <x-slot name="trigger">
                     <x-dropdown-link
-                            class="text-white hover:cursor-pointer inline-flex p-10"
+                            class="text-white hover:cursor-pointer hover:text-gray-900 hover:bg-white active:bg-white inline-flex p-10"
                             onclick="event.preventDefault()">
 
                         {{ __('Sign Up') }}

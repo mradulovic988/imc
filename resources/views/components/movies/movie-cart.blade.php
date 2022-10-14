@@ -82,7 +82,7 @@
                                                         name="list_id" id="list-id">
                                                     <option value="">Choose a list</option>
                                                     @foreach($movie['lists'] as $list)
-                                                        @if ($list->user_id === auth()->user()->id )
+                                                        @if ($list->user_id === auth()->user()->id)
                                                             <option value="{{ $list->id }}">{{ $list->list_name }}</option>
                                                         @endif
                                                     @endforeach

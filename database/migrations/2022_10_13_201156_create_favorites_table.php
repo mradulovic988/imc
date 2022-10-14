@@ -13,8 +13,8 @@ return new class extends Migration {
     public function up() {
         Schema::create('favorites', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete()->onDelete('cascade');
-            $table->foreignId('list_id');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('list_id')->constrained()->onDelete('cascade');
             $table->string('show_category');
             $table->string('show_id');
             $table->string('show_name');

@@ -104,7 +104,27 @@
 @yield('content')
 
 @livewireScripts
+<script>
+	// Favorite modals
+	const favoriteModal = () => {
+		const showFavoriteUser = document.querySelectorAll('#favoriteOpenModal');
+		const showFavoriteUserModal = document.querySelectorAll('#favoriteModal');
+		const closeUserModal = document.querySelectorAll('#closeFavoriteModal');
 
+		showFavoriteUser.forEach((user, i) => {
+			user.addEventListener('click', () => {
+				showFavoriteUserModal[i].classList.remove('hidden');
+			});
+
+			if (closeUserModal[i]) {
+				closeUserModal[i].addEventListener('click', () => {
+					showFavoriteUserModal[i].classList.add('hidden');
+				});
+			}
+		});
+	}
+	favoriteModal();
+</script>
 @yield('scripts')
 </body>
 

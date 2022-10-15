@@ -8,8 +8,8 @@
             <a href="{{ route('movies.show', $movie['id']) }}"
                class="text-lg hover:text-gray:300">{{ $movie['title'] }}</a>
             @auth
-                <div class="inline-flex" x-data="{ isFavoriteOpen: false }">
-                    <a href="#" @click="isFavoriteOpen = true" class="text-end float-right absolute top-0 right-0 mt-1">
+                <div class="inline-flex">
+                    <button id="favoriteOpenModal" class="text-end float-right absolute top-0 right-0 mt-1">
                         <svg width="20px" height="20px" viewBox="0 0 100 100" version="1.1"
                              xmlns="http://www.w3.org/2000/svg"
                              xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -22,17 +22,16 @@
                                 </g>
                             </g>
                         </svg>
-                    </a>
+                    </button>
 
-                    <div x-show="isFavoriteOpen"
-                         class="fixed top-0 left-0 w-full h-full flex items-center shadow-lg overflow-y-auto z-50">
+                    <div id="favoriteModal"
+                         class="fixed top-0 left-0 w-full h-full flex items-center shadow-lg overflow-y-auto z-50 hidden">
                         <div id="menu" class="w-full h-full bg-gray-900 bg-opacity-80 top-0 fixed sticky-0">
                             <div class="2xl:container  2xl:mx-auto py-48 px-4 md:px-28 flex justify-center items-center">
                                 <div class="w-96 md:w-auto dark:bg-gray-800 relative flex flex-col justify-center items-center bg-white py-16 px-4 md:px-24 xl:py-24 xl:px-36">
-                                    <button type="button" @click="isFavoriteOpen = false"
-                                            @keydown.escape.window="isFavoriteOpen = false"
+                                    <button id="closeFavoriteModal" type="button"
                                             class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
-                                            data-modal-toggle="popup-modal">
+                                    >
                                         <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
                                              xmlns="http://www.w3.org/2000/svg">
                                             <path fill-rule="evenodd"
@@ -82,11 +81,12 @@
                                                         name="list_id" id="list-id">
                                                     <option value="">Choose a list</option>
                                                     @foreach($movie['lists'] as $list)
-                                                        @if ($list->user_id === auth()->user()->id)
+                                                        @if ($list->user_id === auth()->user()->id )
                                                             <option value="{{ $list->id }}">{{ $list->list_name }}</option>
                                                         @endif
                                                     @endforeach
                                                 </select>
+
                                                 <button class="bg-white border border-orange-300 hover:border-orange-500 hover:text-orange-500 focus:outline-none font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mx-2 text-orange-500 transition ease-in-out duration-200">
                                                     <svg class="w-5 h-auto fill-gray-900 hover:fill-orange-500 transition ease-in-out duration-150"
                                                          viewBox="0 0 32 32" version="1.1"
@@ -133,4 +133,5 @@
         </div>
     </div>
 </div>
+
 <x-flash-message/>

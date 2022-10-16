@@ -44,7 +44,7 @@ class MoviesViewModel extends ViewModel {
                 'vote_average' => $movie['vote_average'],
                 'release_date' => Carbon::parse($movie['release_date'])->format('M d, Y'),
                 'genres' => $genresFormatted,
-                'lists' => Lists::all()
+                'lists' => Lists::where('user_id', auth()->user()->id)->latest()->get()
             ]);
         });
     }

@@ -44,7 +44,7 @@ class TvViewModel extends ViewModel {
                 'vote_average' => $tvshows['vote_average'],
                 'first_air_date' => Carbon::parse($tvshows['first_air_date'])->format('M d, Y'),
                 'genres' => $genresFormatted,
-                'lists' => Lists::all(),
+                'lists' => Lists::where('user_id', auth()->user()->id)->latest()->get()
             ])->only([
                 'poster_path', 'id', 'genre_ids', 'name', 'vote_average', 'overview', 'first_air_date', 'genres', 'lists'
             ]);

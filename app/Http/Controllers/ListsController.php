@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class ListsController extends Controller {
     public function index(Favorites $favorites) {
         return view('profile.lists.your-lists', [
-            'lists' => Lists::latest()->get(),
+            'lists' => Lists::where('user_id', auth()->user()->id)->latest()->paginate(5),
             'favorites' => Favorites::latest()->get()
         ]);
     }
@@ -67,7 +67,7 @@ class ListsController extends Controller {
     public function show(Lists $lists) {
         return view('profile.lists.show-your-list', [
             'lists' => $lists,
-            'favorites' => Favorites::all()
+            'favorites' => Favorites::where('user_id', auth()->user()->id)->where('list_id', $lists['id'])->get()
         ]);
     }
 }

@@ -25,17 +25,4 @@
             </div>
         </div> <!-- End now playing movies -->
     </div>
-    <script>
-			// const favoriteModal = () => {
-			// 	const showFavoriteUser = document.querySelectorAll('#favoriteOpenModal');
-			// 	const showFavoriteUserModal = document.querySelectorAll('#favoriteModal');
-            //
-			// 	showFavoriteUser.forEach((user, i) => {
-			// 		user.addEventListener('click', () => {
-			// 			showFavoriteUserModal[i].classList.remove('hidden');
-			// 		});
-			// 	});
-			// }
-			// favoriteModal();
-    </script>
 @endsection

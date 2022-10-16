@@ -23,7 +23,7 @@ class MovieViewModel extends ViewModel {
             'crew' => collect($this->movie['credits']['crew'])->take(5),
             'cast' => collect($this->movie['credits']['cast'])->take(5),
             'images' => collect($this->movie['images']['backdrops'])->take(9),
-            'lists' => Lists::all()
+            'lists' => Lists::where('user_id', auth()->user()->id)->latest()->get()
         ])->only([
             'poster_path', 'id', 'genres', 'title', 'vote_average', 'overview', 'release_date', 'credits', 'videos', 'images', 'crew', 'cast', 'images', 'tagline', 'lists'
         ]);

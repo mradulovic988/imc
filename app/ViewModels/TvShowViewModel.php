@@ -23,7 +23,7 @@ class TvShowViewModel extends ViewModel {
             'crew' => collect($this->tvshow['credits']['crew'])->take(5),
             'cast' => collect($this->tvshow['credits']['cast'])->take(5),
             'images' => collect($this->tvshow['images']['backdrops'])->take(9),
-            'lists' => Lists::all(),
+            'lists' => Lists::where('user_id', auth()->user()->id)->latest()->get(),
         ])->only([
             'poster_path', 'id', 'genres', 'vote_average', 'overview', 'first_air_date', 'credits', 'videos', 'images', 'crew', 'cast', 'images', 'tagline', 'name', 'created_by', 'lists'
         ]);

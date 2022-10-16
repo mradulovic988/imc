@@ -39,28 +39,34 @@
                                                          class="hover:opacity-75 transition ease-in-out duration-150">
                                                 </a>
                                                 <div class="mt-2 relative">
+
                                                     <a href="/{{ $favorite->show_category.'/'.$favorite->show_id }}"
                                                        class="text-md mt-2 hover:text-gray:300">{{ $favorite->show_name }}</a>
-                                                    <a href="#"
-                                                       class="text-end float-right absolute top-0 right-0 mt-1">
-                                                        <svg width="14px" height="14px" viewBox="0 0 100 100"
-                                                             version="1.1"
-                                                             xmlns="http://www.w3.org/2000/svg"
-                                                             xmlns:xlink="http://www.w3.org/1999/xlink">
-                                                            <g class="stroke-red-400"
-                                                               id="38.-Hearth" stroke="none" stroke-width="1"
-                                                               fill="#f87171"
-                                                               fill-rule="evenodd"
-                                                               stroke-linecap="round"
-                                                               stroke-linejoin="round">
-                                                                <g transform="translate(2.000000, 5.000000)"
-                                                                   id="Layer-1"
-                                                                   stroke="" stroke-width="4">
-                                                                    <path d="M0,28.4968421 C0,71.2421048 42.215625,90.24 48,90.24 C53.784375,90.24 96,71.2421048 96,28.4968421 C96,28.2459588 95.9824899,28.0047118 95.9481422,27.7728233 C95.9825427,27.2269576 96,26.6765487 96,26.1221053 C96,11.6952649 84.1803174,0 69.6,0 C60.6712427,0 52.7777636,4.3858941 48,11.0991442 C43.2222364,4.3858941 35.3287573,0 26.4,0 C11.8196826,0 0,11.6952649 0,26.1221053 C0,26.6770096 0.0174863673,27.2278728 0.0519436085,27.7741847 C0.0175367953,28.0057341 0,28.2465295 0,28.4968421 Z"></path>
+                                                    <form action="/favorite/{{ $favorite->id }}"
+                                                          method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit"
+                                                                class="text-end float-right absolute top-0 right-0 mt-1">
+                                                            <svg width="14px" height="14px" viewBox="0 0 100 100"
+                                                                 version="1.1"
+                                                                 xmlns="http://www.w3.org/2000/svg"
+                                                                 xmlns:xlink="http://www.w3.org/1999/xlink">
+                                                                <g class="stroke-red-400"
+                                                                   id="38.-Hearth" stroke="none" stroke-width="1"
+                                                                   fill="#f87171"
+                                                                   fill-rule="evenodd"
+                                                                   stroke-linecap="round"
+                                                                   stroke-linejoin="round">
+                                                                    <g transform="translate(2.000000, 5.000000)"
+                                                                       id="Layer-1"
+                                                                       stroke="" stroke-width="4">
+                                                                        <path d="M0,28.4968421 C0,71.2421048 42.215625,90.24 48,90.24 C53.784375,90.24 96,71.2421048 96,28.4968421 C96,28.2459588 95.9824899,28.0047118 95.9481422,27.7728233 C95.9825427,27.2269576 96,26.6765487 96,26.1221053 C96,11.6952649 84.1803174,0 69.6,0 C60.6712427,0 52.7777636,4.3858941 48,11.0991442 C43.2222364,4.3858941 35.3287573,0 26.4,0 C11.8196826,0 0,11.6952649 0,26.1221053 C0,26.6770096 0.0174863673,27.2278728 0.0519436085,27.7741847 C0.0175367953,28.0057341 0,28.2465295 0,28.4968421 Z"></path>
+                                                                    </g>
                                                                 </g>
-                                                            </g>
-                                                        </svg>
-                                                    </a>
+                                                            </svg>
+                                                        </button>
+                                                    </form>
                                                     <div class="flex items-center text-gray-400 text-sm mt-1">
                                                         <svg class="fill-current text-orange-500 w-4"
                                                              viewBox="0 0 24 24">

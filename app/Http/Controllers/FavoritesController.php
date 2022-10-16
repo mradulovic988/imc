@@ -36,4 +36,9 @@ class FavoritesController extends Controller {
         }
 
     }
+
+    public function destroy(Favorites $favorites) {
+        $favorites->delete();
+        return back()->with('lists', 'Item deleted successfully.');
+    }
 }

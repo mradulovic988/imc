@@ -37,6 +37,7 @@ Route::controller(ListsController::class)->middleware(['auth', 'verified'])->gro
 
 Route::controller(FavoritesController::class)->middleware(['auth', 'verified'])->group(function () {
     Route::post('/favorites', 'store')->name('favorites.store');
+    Route::delete('/favorite/{favorites}', 'destroy')->name('favorite.destroy');
 });
 
 Route::controller(UserController::class)->middleware(['auth', 'verified'])->group(function () {

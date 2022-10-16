@@ -15,6 +15,6 @@ class Favorites extends Model {
     }
 
     public function lists() {
-        return $this->hasMany(Lists::class, 'list_id');
+        return $this->belongsTo(Lists::class, 'list_id');
     }
 }

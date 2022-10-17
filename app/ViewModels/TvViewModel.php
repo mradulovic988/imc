@@ -4,6 +4,7 @@ namespace App\ViewModels;
 
 use App\Models\Lists;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Spatie\ViewModels\ViewModel;
 
 class TvViewModel extends ViewModel {
@@ -39,12 +40,18 @@ class TvViewModel extends ViewModel {
                 return [$value => $this->genres()->get($value)];
             })->implode(', ');
 
+            if (Auth::check()) {
+                $checkList = Lists::where('user_id', auth()->user()->id)->latest()->get();
+            } else {
+                $checkList = Lists::all();
+            }
+
             return collect($tvshows)->merge([
                 'poster_path' => 'https://image.tmdb.org/t/p/w500/' . $tvshows['poster_path'],
                 'vote_average' => $tvshows['vote_average'],
                 'first_air_date' => Carbon::parse($tvshows['first_air_date'])->format('M d, Y'),
                 'genres' => $genresFormatted,
-                'lists' => Lists::where('user_id', auth()->user()->id)->latest()->get()
+                'lists' => $checkList
             ])->only([
                 'poster_path', 'id', 'genre_ids', 'name', 'vote_average', 'overview', 'first_air_date', 'genres', 'lists'
             ]);

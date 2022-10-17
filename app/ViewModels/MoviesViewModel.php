@@ -4,6 +4,7 @@ namespace App\ViewModels;
 
 use App\Models\Lists;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Spatie\ViewModels\ViewModel;
 
 class MoviesViewModel extends ViewModel {
@@ -39,12 +40,18 @@ class MoviesViewModel extends ViewModel {
                 return [$value => $this->genres()->get($value)];
             })->implode(', ');
 
+            if (Auth::check()) {
+                $checkList = Lists::where('user_id', auth()->user()->id)->latest()->get();
+            } else {
+                $checkList = Lists::all();
+            }
+
             return collect($movie)->merge([
                 'poster_path' => 'https://image.tmdb.org/t/p/w500/' . $movie['poster_path'],
                 'vote_average' => $movie['vote_average'],
                 'release_date' => Carbon::parse($movie['release_date'])->format('M d, Y'),
                 'genres' => $genresFormatted,
-                'lists' => Lists::where('user_id', auth()->user()->id)->latest()->get()
+                'lists' => $checkList
             ]);
         });
     }

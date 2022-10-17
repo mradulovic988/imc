@@ -4,6 +4,7 @@ namespace App\ViewModels;
 
 use App\Models\Lists;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Spatie\ViewModels\ViewModel;
 
 class MovieViewModel extends ViewModel {
@@ -15,6 +16,12 @@ class MovieViewModel extends ViewModel {
     }
 
     public function movie() {
+        if (Auth::check()) {
+            $checkList = Lists::where('user_id', auth()->user()->id)->latest()->get();
+        } else {
+            $checkList = Lists::all();
+        }
+
         return collect($this->movie)->merge([
             'poster_path' => 'https://image.tmdb.org/t/p/w500/' . $this->movie['poster_path'],
             'vote_average' => number_format($this->movie['vote_average'], 2),
@@ -23,7 +30,7 @@ class MovieViewModel extends ViewModel {
             'crew' => collect($this->movie['credits']['crew'])->take(5),
             'cast' => collect($this->movie['credits']['cast'])->take(5),
             'images' => collect($this->movie['images']['backdrops'])->take(9),
-            'lists' => Lists::where('user_id', auth()->user()->id)->latest()->get()
+            'lists' => $checkList
         ])->only([
             'poster_path', 'id', 'genres', 'title', 'vote_average', 'overview', 'release_date', 'credits', 'videos', 'images', 'crew', 'cast', 'images', 'tagline', 'lists'
         ]);
